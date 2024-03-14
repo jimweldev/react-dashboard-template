@@ -10,6 +10,8 @@ import Login from "./pages/public/Login";
 import Home from "./pages/private/Home";
 import useThemeStore from "./store/themeStore";
 import { useEffect } from "react";
+import { Toaster } from "@/components/ui/sonner";
+import AdminLayout from "./layouts/AdminLayout";
 
 const App = () => {
   const { authUser } = useAuthUserStore((state: any) => ({
@@ -31,22 +33,36 @@ const App = () => {
   // PRIVATE LAYOUT
   const privateRoutes = [
     {
-      path: "/",
-      element: <PrivateLayout />,
+      path: "admin",
+      element: <AdminLayout />,
       children: [
         {
-          path: "/",
+          path: "",
           element: <Home />,
         },
         {
-          path: "/users",
+          path: "users",
+          element: <Home />,
+        },
+      ],
+    },
+    {
+      path: "home",
+      element: <PrivateLayout />,
+      children: [
+        {
+          path: "",
+          element: <Home />,
+        },
+        {
+          path: "clients",
           element: <Home />,
         },
       ],
     },
     {
       path: "/*",
-      element: <Navigate to="/" replace />,
+      element: <Navigate to="/home" replace />,
     },
   ];
 
@@ -73,6 +89,7 @@ const App = () => {
   return (
     <>
       <RouterProvider router={router} />
+      <Toaster expand={true} />
     </>
   );
 };

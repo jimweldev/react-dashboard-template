@@ -13,28 +13,28 @@ const Sidebar = ({ isSidebarOpen }: any) => {
       <div className="space-y-4 py-4">
         <div className="px-3 py-2">
           <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
-            Home
+            Admin
           </h2>
 
           <div className="space-y-1">
             <Button
-              variant={pathname === "/home" ? "secondary" : "ghost"}
+              variant={pathname === "/admin" ? "secondary" : "ghost"}
               className="w-full justify-start"
               asChild
             >
-              <NavLink className="sidebar-item" to={`/home`}>
+              <NavLink className="sidebar-item" to={`/admin`}>
                 <FaHouse className="text-lg mr-2" />
-                Home
+                Dashboard
               </NavLink>
             </Button>
             <Button
-              variant={pathname === "/home/clients" ? "secondary" : "ghost"}
+              variant={pathname === "/admin/users" ? "secondary" : "ghost"}
               className="w-full justify-start"
               asChild
             >
-              <NavLink className="sidebar-item" to={`/home/clients`}>
+              <NavLink className="sidebar-item" to={`/admin/users`}>
                 <FaUsers className="text-lg mr-2" />
-                Clients
+                Users
               </NavLink>
             </Button>
           </div>

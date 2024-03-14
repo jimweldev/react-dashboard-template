@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import Sidebar from "@/components/layouts/private/Sidebar";
+import Sidebar from "@/components/layouts/admin/Sidebar";
 import Navbar from "@/components/layouts/Navbar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-const PrivateLayout = () => {
+const AdminLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   return (
@@ -29,4 +29,4 @@ const PrivateLayout = () => {
   );
 };
 
-export default PrivateLayout;
+export default AdminLayout;

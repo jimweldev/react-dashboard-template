@@ -12,6 +12,7 @@ import {
 import useAuthUserStore from "@/store/authUserStore";
 import useThemeStore from "@/store/themeStore";
 import { CgMenuLeft } from "react-icons/cg";
+import { NavLink } from "react-router-dom";
 
 const Navbar = ({ isSidebarOpen, setIsSidebarOpen }: any) => {
   const { authUser, removeAuthUser } = useAuthUserStore((state: any) => ({
@@ -27,14 +28,43 @@ const Navbar = ({ isSidebarOpen, setIsSidebarOpen }: any) => {
   return (
     <div className="navbar border-b">
       <div className="flex h-16 items-center px-4">
-        <button
-          className="sidebar-toggle"
-          onClick={() => {
-            setIsSidebarOpen(!isSidebarOpen);
-          }}
-        >
-          <CgMenuLeft className="text-3xl" />
-        </button>
+        <div className="flex items-center">
+          <button
+            className="sidebar-toggle"
+            onClick={() => {
+              setIsSidebarOpen(!isSidebarOpen);
+            }}
+          >
+            <CgMenuLeft className="text-3xl" />
+          </button>
+
+          <nav className="flex items-center space-x-4 lg:space-x-6 ml-6">
+            <NavLink
+              to="/admin"
+              className={({ isActive }) =>
+                [
+                  isActive
+                    ? "text-sm font-medium transition-colors hover:text-primary"
+                    : "text-sm font-medium text-muted-foreground transition-colors hover:text-primary",
+                ].join(" ")
+              }
+            >
+              Admin
+            </NavLink>
+            <NavLink
+              to="/home"
+              className={({ isActive }) =>
+                [
+                  isActive
+                    ? "text-sm font-medium transition-colors hover:text-primary"
+                    : "text-sm font-medium text-muted-foreground transition-colors hover:text-primary",
+                ].join(" ")
+              }
+            >
+              Home
+            </NavLink>
+          </nav>
+        </div>
 
         <div className="ml-auto flex items-center space-x-4">
           <DropdownMenu>
